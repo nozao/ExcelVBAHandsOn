@@ -14,6 +14,10 @@
     時間を取りますのでコピペではなく、直接記述してください。
     ![](images/02-HelloWorld/02-HelloWorld20211712-133125.png)
 
+
+
+
+
 ```vb
 Sub main()
     Cells(1, 1).Value = "Hello,World"
@@ -35,9 +39,12 @@ End Sub
 
 手動でA1セルの値を消しても、再度実行ボタンを押せば再び`Hello,World`が表示されることを確認してください。  
 
+<div style="page-break-before:always"></div>
+
 ---
 
 ## Hello,Worldプログラムの解説
 
+---
 
 これからプログラムの解説をしていきます。
