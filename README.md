@@ -23,8 +23,9 @@ VBAもプログラム言語の一つであるため、ここで学習した文�
 5. 入力された文字を受け取って計算し、他のセルに書き出す(変数について)
 6. For文の基礎的な文法
 7. If文の基礎的な文法
-8. オリジナルの関数を作ろう
-9. ボタンと連動させる
+8. 用意されている関数を使う
+9. オリジナルの関数を作る
+10. ボタンと連動させる
 
 本編とは別に、下記の内容についても説明します
 
@@ -32,3 +33,39 @@ VBAもプログラム言語の一つであるため、ここで学習した文�
 - エラーの対処法
 - プログラム作成のコツ(ロジックの作り方、ちょっとづつ作ってみる)
 - イベントドリブンについて
+
+
+## ソースコード
+
+参考までに、このマクロのプログラムコードはこうなっています。  
+これを詳細に解説していきます。
+
+```vb
+Sub main()
+    Call DrawCalendar(Cells(1, 3).Value, Cells(1, 4).Value)
+End Sub
+
+Function DrawCalendar(TargetYear As Integer, TargetMonth As Integer)
+
+    Dim FirstDate As Date
+    Dim PrintDate As Date
+    Dim DiffDay As Integer
+    
+    FirstDate = DateSerial(TargetYear, TargetMonth, 1)
+    DiffDay = Weekday(FirstDate, vbSunday)
+    
+    PrintDate = FirstDate - DiffDay + 1
+    
+    For w = 3 To 8
+        For d = 1 To 7
+            If Month(PrintDate) = Month(FirstDate) Then
+                Cells(w, d).Value = PrintDate
+            Else
+                Cells(w, d).Value = ""
+            End If
+            PrintDate = PrintDate + 1
+        Next
+    Next
+
+End Function
+```
