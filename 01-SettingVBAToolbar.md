@@ -8,8 +8,10 @@
 
 この設定は最初に一度だけやれば次回からは必要ありません。  
 
-1. `ファイル`メニューから`オプション`を選択します。
+1. `ファイル`メニューから`オプション`を選択します。  
+
     ![](images/01-SettingVBAToolbar/01-SettingVBAToolbar20211712-112614.png)
+
     ![](images/01-SettingVBAToolbar/01-SettingVBAToolbar20211712-113424.png)
 
 2. 表示されたExcelのオプション設定画面から
