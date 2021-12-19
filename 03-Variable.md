@@ -39,6 +39,30 @@ Sub main()
     
     Cells(1, 1).Value = A + B
 End Sub
-
-
 ```
+
+`Cells(1,1).Value=`
+は先ほどと同じく、A1セルに結果を表示するための行です。  
+Aに20、Bに3を代入したのでA+Bの結果が表示されます。  
+
+では、さらに追加してみましょう
+```vb
+Sub main()
+
+    Dim A As Integer
+    Dim B As Integer
+    
+    A = 20
+    B = 3
+    
+    Cells(1, 1).Value = A + B
+
+    B = 10
+    
+    Cells(2, 1).Value = A + B
+End Sub
+```
+
+A=20,B=3の状態で、A+Bの結果をA1セルに。  
+Aは変更せず、Bだけを10に変更した状態でのA+Bの結果をB1セルに出力します。  
+
