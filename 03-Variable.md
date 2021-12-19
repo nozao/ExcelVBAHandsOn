@@ -28,3 +28,17 @@
 
 先ほどと同じようにVBEを起動し、Sheet1のコードエディタに下記プログラムを入力してください。  
 
+```vb
+Sub main()
+
+    Dim A As Integer
+    Dim B As Integer
+    
+    A = 20
+    B = 3
+    
+    Cells(1, 1).Value = A + B
+End Sub
+
+
+```
