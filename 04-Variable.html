@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>04-Variable.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 0px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+ */
+body {
+	font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', 'ＭＳ　Ｐゴシック', 'MS PGothic', sans-serif;
+	margin: 0 auto;
+	}
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #815800; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+	background-color: rgb(223, 223, 223);
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+h1 {
+    color: rgb(255, 255, 255);
+    font-size: 2.2em;
+    font-weight: bold;
+    margin: 0 auto 0 auto;
+    padding: 0;
+	background-color: #55c500;
+  }
+  
+  h2 {
+    font-size: 2em;
+    font-weight: bold;
+    position: relative;
+    padding: 1rem 2rem calc(1rem + 10px);
+    background: #f8f8f8;
+  }
+  h2:before {
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border: 4px solid #000;
+  }  
+  h3 {
+    color: #333333;
+    font-size: 1.8em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.1em;
+    font-weight: bold;
+    line-height: 1.5;
+    font-feature-settings: "palt";
+    margin-top: 2.2em;
+    margin-bottom: 2.4rem;
+    cursor: pointer;
+  }
+  
+  h4 {
+    color: #333333;
+    font-size: 1.6em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.1em;
+    font-weight: bold;
+    line-height: 1.5;
+    font-feature-settings: "palt";
+    margin-top: 2.2em;
+    margin-bottom: 2.4rem;
+    cursor: pointer;
+  }
+
+  h5 {
+    color: #333333;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.5;
+    font-feature-settings: "palt";
+    margin-top: 2.2em;
+    margin-bottom: 2.4rem;
+    cursor: pointer;
+  }
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="04-%E5%A4%89%E6%95%B0%E3%81%A8%E6%BC%94%E7%AE%97%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">04-変数と演算について</h1>
+<p>プログラムの基本的な流れは、入力→処理→出力と言えます。</p>
+<p>プログラムを使うユーザーが最終的に必要なのは出力された結果であり、結果を出力するためには何らかの材料が必要です(入力)<br>
+入力したものをそのまま出力しても仕方ありませんので、その間には何らかの加工や処理が必要となるはずです。</p>
+<p><img src="images/03-Variable/03-Variable20211812-142448.png" alt=""></p>
+<p>前節ではセルに対して任意の文字列を表示することができました。<br>
+これは、<code>出力</code>ができるようになったということになります。</p>
+<p>今回は<code>処理</code>をするために必要となる<code>変数</code>と、一番簡単な処理である<code>演算</code>のやり方を紹介します。</p>
+<h2 id="%E5%A4%89%E6%95%B0%E3%81%A8%E3%81%AF">変数とは</h2>
+<p>変数とは、数値や文字を一時的に入れることのできる空き箱のようなもの、とよく説明されます。<br>
+<img src="images/03-Variable/03-Variable20211812-143401.png" alt=""></p>
+<p>変数を作成した直後には何も入っていませんが、一度その中に数値や文字を代入すると、<strong>次に書き換えられるまでの間は</strong>ずっと同じ値を持ち続けています。</p>
+<p>値を代入した変数は、値そのものと同じように扱うことができます。<br>
+そのため、変数に別の変数を代入することもできます。</p>
+<p><img src="images/03-Variable/03-Variable20211812-144201.png" alt=""></p>
+<p>実際に使ってみましょう。</p>
+<p>先ほどと同じようにVBEを起動し、Sheet1のコードエディタに下記プログラムを入力してください。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">Sub</span> main()
+
+    <span class="hljs-keyword">Dim</span> A <span class="hljs-keyword">As</span> <span class="hljs-built_in">Integer</span>
+    <span class="hljs-keyword">Dim</span> B <span class="hljs-keyword">As</span> <span class="hljs-built_in">Integer</span>
+    
+    A = <span class="hljs-number">20</span>
+    B = <span class="hljs-number">3</span>
+    
+    Cells(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>).Value = A + B
+<span class="hljs-keyword">End</span> <span class="hljs-keyword">Sub</span>
+</div></code></pre>
+<p><code>Cells(1,1).Value=</code>
+は先ほどと同じく、A1セルに結果を表示するための行です。<br>
+Aに20、Bに3を代入したのでA+Bの結果が表示されます。</p>
+<p>では、さらに追加してみましょう</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">Sub</span> main()
+
+    <span class="hljs-keyword">Dim</span> A <span class="hljs-keyword">As</span> <span class="hljs-built_in">Integer</span>
+    <span class="hljs-keyword">Dim</span> B <span class="hljs-keyword">As</span> <span class="hljs-built_in">Integer</span>
+    
+    A = <span class="hljs-number">20</span>
+    B = <span class="hljs-number">3</span>
+    
+    Cells(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>).Value = A + B
+
+    B = <span class="hljs-number">10</span>
+    
+    Cells(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>).Value = A + B
+<span class="hljs-keyword">End</span> <span class="hljs-keyword">Sub</span>
+</div></code></pre>
+<p>A=20,B=3の状態で、A+Bの結果をA1セルに。<br>
+Aは変更せず、Bだけを10に変更した状態でのA+Bの結果をB1セルに出力します。</p>
+<p>では、ここから細かく解説していきます。</p>
+<h3 id="%E5%A4%89%E6%95%B0%E3%81%AE%E5%AE%A3%E8%A8%80">変数の宣言</h3>
+<p>VBAでは新しく変数を作成するときに<code>Dim</code>というコマンドを使います。<br>
+なお、新しく変数を作成することを「変数を宣言する」と表現します。</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">Dim</span> A <span class="hljs-keyword">as</span> <span class="hljs-built_in">Integer</span>
+</div></code></pre>
+<p>と書くと、Aという箱をInteger(インテジャー)型として用意する。という意味になります。</p>
+<p>Integer型というのは変数の種類を表しており、-32,768 ～ 32,767の範囲の整数しか入らないタイプの変数です。</p>
+<p>他にも変数には下表のような種類があり、箱(変数)の中に何を入れるかによって使い分けることができますが、「何が入るかまだ分からない」時や「何でも入れられるようにしたい」というときは単に</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">Dim</span> A
+</div></code></pre>
+<p>と書けば「何でも入る変数」とすることもできます。(下表最下行の<code>Variant型</code>)<br>
+「何でも入る変数」は便利ですが思わぬエラーやバグの原因になったり、マクロ実行速度が低下する原因になったりする場合があります。プログラムに慣れてきたら適切な型を選択するクセをつけておきましょう。</p>
+<table>
+<thead>
+<tr>
+<th>データ型</th>
+<th>名称</th>
+<th>格納できる範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integer</td>
+<td>整数型</td>
+<td>-32,768 ～ 32,767</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>長整数型</td>
+<td>-2,147,483,648 ～ 2,147,483,647</td>
+</tr>
+<tr>
+<td>LongLong</td>
+<td>64ビット符号付き数値</td>
+<td>-9223372036854775808 ～ 9223372036854775807</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>※64ビットプラットフォームのみで有効な宣言型</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>単精度浮動小数点数型</td>
+<td>-3.402823E38 ～ -1.401298E-45(負の値)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>1.401298E-45 ～ 3.402823E38(正の値)</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>倍精度浮動小数点数型</td>
+<td>-1.79769313486232E308 ～ -4.94065645841247E-324(負の値)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>4.94065645841247E-324 ～ 1.79769313486232E308(正の値)</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>通貨型</td>
+<td>-922,337,203,685,477.5808 ～ 922,337,203,685,477.00</td>
+</tr>
+<tr>
+<td>String</td>
+<td>文字列型</td>
+<td>最大約20億文字まで</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>日付型</td>
+<td>西暦100 年1月1日～西暦9999年12月31日までの日付と時刻</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>バイト型</td>
+<td>0～255の範囲の単精度の正の数値。8 ビット(1 バイト)</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>ブール型</td>
+<td>真 (True) または偽 (False)</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>オブジェクト型</td>
+<td>オブジェクト</td>
+</tr>
+<tr>
+<td>Variant</td>
+<td>バリアント型</td>
+<td>すべてのデータ</td>
+</tr>
+</tbody>
+</table>
+<p>話を戻します。</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">Dim</span> A <span class="hljs-keyword">As</span> <span class="hljs-built_in">Integer</span>
+    <span class="hljs-keyword">Dim</span> B <span class="hljs-keyword">As</span> <span class="hljs-built_in">Integer</span>
+</div></code></pre>
+<p>この段階で2つの箱(変数)が作成されました。<br>
+この2つの変数にはまだ値が入っていないため、中身はカラの状態です。</p>
+<p>これから変数A、変数Bにそれぞれ値を代入していきます。</p>
+<pre class="hljs"><code><div>    A = <span class="hljs-number">20</span>
+    B = <span class="hljs-number">3</span>
+</div></code></pre>
+<p>これでAは20の値を、Bは3の値を持つことになりました。</p>
+<p>つまりA+Bというのは20+3と言い換えることができます。<br>
+20+3の結果を1行目1列のセル(A1セル)の値とします。</p>
+<pre class="hljs"><code><div>    Cells(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>).Value = A + B
+</div></code></pre>
+<p>次にBの値を10に書き換えます。<br>
+先ほどと同じくA+Bの結果を2行目1列(A2セル)の値とします。<br>
+A+Bという式は先ほどと同じですが、Bの値が10に書き変わっているので20+10となり、結果の30がA2セルに表示されます。</p>
+<pre class="hljs"><code><div>    B = <span class="hljs-number">10</span>
+    
+    Cells(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>).Value = A + B
+</div></code></pre>
+<h3 id="%E6%BC%94%E7%AE%97">演算</h3>
+
+</body>
+</html>
