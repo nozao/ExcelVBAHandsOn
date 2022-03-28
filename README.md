@@ -78,7 +78,7 @@ VBAもプログラム言語の一つであるため、ここで学習した文�
 講義の中で詳細に解説していきます。
 
 ```vb
-Sub main(TargetYear As Integer, TargetMonth As Integer)
+Sub main()
 
     Dim FirstDate As Date
     Dim PrintDate As Date
@@ -89,14 +89,11 @@ Sub main(TargetYear As Integer, TargetMonth As Integer)
     
     PrintDate = FirstDate - DiffDay + 1
     
+    Dim i as Integer
     For w = 3 To 8
         For d = 1 To 7
-            If Month(PrintDate) = Month(FirstDate) Then
-                Cells(w, d).Value = PrintDate
-            Else
-                Cells(w, d).Value = ""
-            End If
-            PrintDate = PrintDate + 1
+            Cells(w,d).Value = PrintDate + i
+            i = i + 1
         Next
     Next
 
