@@ -11,8 +11,8 @@
 
 2. 開いたコードエディタの中に、下図のようにプログラムを書いてください。  
     記入するための時間を取りますのでコピペではなく、直接記述してください。
-    ![](images/02-HelloWorld/02-HelloWorld20211712-133125.png)
-    ちなみに、2行目のCellsの前の空白はスペース4つ、もしくはTabキーを1回押して入力してください
+    ![](images/02-HelloWorld/02-HelloWorld20211712-133125.png)  
+    ちなみに、2行目のCellsの前の空白はスペース4つ、もしくはTabキーを1回押して入力してください  
  ![](images/03-HelloWorld/03-HelloWorld20221603-095253.png)
 
 
@@ -29,7 +29,7 @@ End Sub
     ![](images/02-HelloWorld/02-HelloWorld20211712-134336.png)
 
 4. できたら上図赤枠の再生ボタンを押します。
-5. するとExcelシートのA1セルに`Hello,World`と表示されました。
+5. するとExcelシートのA1セルに`Hello,World`と表示されました。  
     ![](images/02-HelloWorld/02-HelloWorld20211712-134704.png)
 
 おめでとうございます！  
@@ -56,7 +56,7 @@ Sub main()
 
 実際に複数のサブルーチンを作成した場合、下図のようになります。  
 
-![](images/02-HelloWorld/02-HelloWorld20211712-175513.png)
+![](images/02-HelloWorld/02-HelloWorld20211712-175513.png)  
 
 上図のように`サブルーチン`はSubで始まり、その後は名前をつけます。今回は`main`という名前にしましたが、分かりやすければ何でも構いません。  
 
@@ -96,14 +96,14 @@ End Sub
     Cells(3,2)
 ```
 となります。  
-![](images/02-HelloWorld/02-HelloWorld20211712-174741.png)
+![](images/02-HelloWorld/02-HelloWorld20211712-174741.png)  
 
 
 では、`Cells(1,1)`の後に書かれている`.Value`はどういう意味かというと、そのセルに入力されている値のことを示しています。  
 Excelのセルは数値や数式を入力できるだけでなく、書式設定や文字色、背景色など様々な設定や入力が可能です。  
 そのため、それらをプログラムで操作できるように様々な設定項目が用意されています。  
 
-![](images/02-HelloWorld/02-HelloWorld20211712-180430.png)
+![](images/02-HelloWorld/02-HelloWorld20211712-180430.png)  
 
 ざっと数えただけで80～100以上の設定項目があるため、Cells(1,1)のどの項目を変更したいのかを明確にする必要があるのです。(ちなみに、全て覚える必要はありません)  
 
